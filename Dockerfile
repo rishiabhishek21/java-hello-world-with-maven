@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM openjdk:26-ea-26-jdk
 ARG JAR_FILE=java-hello-world-with-maven/target/jb-hello-world-maven-0.2.0.jar
 # create app dir
 RUN mkdir -p /app
