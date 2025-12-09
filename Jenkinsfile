@@ -56,7 +56,7 @@ pipeline {
              withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDS, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
               sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
             dir('java-hello-world-with-maven'){
-            sh 'docker build . -t rishiabhishek88/java-hello-world:v1'
+            sh 'docker build . -t rishiabhishek88/java-hello-world:${BUILD_NUMBER}'
             sh 'docker push rishiabhishek88/java-hello-world:v1'
             }
              }
