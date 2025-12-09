@@ -1,6 +1,10 @@
 pipeline {
   agent any
-
+  parameters {
+    choice(name: 'DEPLOY_ENV', choices: ['dev', 'qa', 'staging', 'prod'], description: 'Select environment to deploy to')
+    choice(name: 'IMAGE_TAG', choices: ['v1', 'v2', 'latest'], description: 'Select Docker image tag')
+    booleanParam(name: 'RUN_DEPLOY', defaultValue: false, description: 'If true, run the Deploy stage after push')
+  }
   environment {
     GROUP_ID      = 'com.example'
     ARTIFACT_ID   = 'jb-hello-world-maven'
